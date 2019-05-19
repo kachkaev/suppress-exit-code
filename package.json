@@ -1,0 +1,23 @@
+{
+  "name": "suppress-exit-code",
+  "version": "0.1.0",
+  "description": "Cross-platform CLI wrapper that runs any command and exits with zero",
+  "keywords": [
+    "cli",
+    "exit-code"
+  ],
+  "author": {
+    "name": "Alexander Kachkaev",
+    "url": "https://en.kachkaev.ru/"
+  },
+  "homepage": "https://github.com/kachkaev/suppress-exit-code",
+  "repository": "kachkaev/suppress-exit-code",
+  "license": "MIT",
+  "scripts": {},
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {}
+}
