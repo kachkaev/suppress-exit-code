@@ -2,7 +2,7 @@
 
 _Cross-platform CLI wrapper that runs any command and exits with zero_
 
-![npm](https://img.shields.io/npm/v/suppress-exit-code.svg)
+[![npm](https://img.shields.io/npm/v/suppress-exit-code.svg)](https://www.npmjs.com/package/suppress-exit-code)
 
 ```bash
 ## exits with non-zero
