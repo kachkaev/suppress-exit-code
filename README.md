@@ -2,6 +2,8 @@
 
 _Cross-platform CLI wrapper that runs any command and exits with zero_
 
+![npm](https://img.shields.io/npm/v/suppress-exit-code.svg)
+
 ```bash
 ## exits with non-zero
 crazy-broken-command --some-arg=42

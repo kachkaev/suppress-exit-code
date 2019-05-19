@@ -4,7 +4,9 @@
   "description": "Cross-platform CLI wrapper that runs any command and exits with zero",
   "keywords": [
     "cli",
-    "exit-code"
+    "exit-code",
+    "ignore",
+    "suppress"
   ],
   "bin": {
     "suppress-exit-code": "index.js"
