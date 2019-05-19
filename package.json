@@ -6,6 +6,9 @@
     "cli",
     "exit-code"
   ],
+  "bin": {
+    "suppress-exit-code": "index.js"
+  },
   "author": {
     "name": "Alexander Kachkaev",
     "url": "https://en.kachkaev.ru/"
@@ -15,9 +18,11 @@
   "license": "MIT",
   "scripts": {},
   "files": [
-    "index.js"
+    "index.js",
+    "README.md"
   ],
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "execa": "^1.0.0"
+  }
 }
