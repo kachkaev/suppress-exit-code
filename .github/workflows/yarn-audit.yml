@@ -1,0 +1,32 @@
+## This pipeline is needed till Snyk adds Yarn Berry support. See https://github.com/kachkaev/njt/pull/29#issuecomment-711438900
+
+name: Run yarn audit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * 6"
+
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run yarn audit
+        run: yarn audit
