@@ -13,7 +13,7 @@ while (args.length) {
   }
 }
 if (!args.length) {
-  console.log("Please specify a child command to run");
+  console.error("Please specify a child command to run");
   process.exit(1);
 }
 
