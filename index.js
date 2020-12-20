@@ -4,7 +4,11 @@ const execa = require("execa");
 const args = [...process.argv];
 while (args.length) {
   const arg = args.shift();
-  if (arg.includes(".bin") || arg === __filename) {
+  if (
+    // @ts-ignore arg cannot be undefined here due to the prior check
+    arg.includes(".bin") ||
+    arg === __filename
+  ) {
     break;
   }
 }
@@ -13,9 +17,17 @@ if (!args.length) {
   process.exit(1);
 }
 
-const childProcess = execa(args.shift(), args);
-childProcess.stdout.pipe(process.stdout);
-childProcess.stderr.pipe(process.stderr);
-childProcess.catch(e => {
-  // non-zero exit code is a noop
+const childProcess = execa(
+  // @ts-ignore args[0] cannot be undefined here due to the prior check
+  args.shift(),
+  args,
+);
+if (childProcess.stdout) {
+  childProcess.stdout.pipe(process.stdout);
+}
+if (childProcess.stderr) {
+  childProcess.stderr.pipe(process.stderr);
+}
+childProcess.catch(() => {
+  // noop for a non-zero exit code is the whole purpose of this library
 });

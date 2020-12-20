@@ -1,0 +1,12 @@
+## extensions
+*.*
+!*.js
+!*.json
+!*.md
+!*.yml
+
+!/.github/
+
+## same as in .gitignore
+node_modules
+.DS_Store
