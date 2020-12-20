@@ -1,6 +1,6 @@
 {
   "name": "suppress-exit-code",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Cross-platform CLI wrapper that runs any command and exits with zero",
   "keywords": [
     "cli",
@@ -8,8 +8,10 @@
     "ignore",
     "suppress"
   ],
-  "homepage": "https://github.com/kachkaev/suppress-exit-code",
-  "repository": "kachkaev/suppress-exit-code",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kachkaev/suppress-exit-code.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Alexander Kachkaev",
@@ -29,6 +31,7 @@
     "lint:prettier": "prettier --check \"**/*\"",
     "lint:tsc": "tsc --project .",
     "lint:yarn-dedupe": "yarn dedupe --check",
+    "prepublishOnly": "yarn lint && yarn test",
     "test": "jest"
   },
   "dependencies": {
