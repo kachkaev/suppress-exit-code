@@ -27,8 +27,8 @@ jobs:
       - name: Lint
         run: yarn lint
 
-  unit-tests:
-    name: Unit tests
+  tests:
+    name: Integration tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -55,5 +55,5 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Run unit tests
+      - name: Run integration tests
         run: yarn test
