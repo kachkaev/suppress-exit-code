@@ -8,5 +8,16 @@
 !/.github/
 
 ## same as in .gitignore
-node_modules
+# dependencies
+.yarn/*
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+yarn-debug.log*
+yarn-error.log*
+
+# misc
 .DS_Store
+.env*
