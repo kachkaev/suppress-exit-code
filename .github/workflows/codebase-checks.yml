@@ -11,7 +11,7 @@ on:
 jobs:
   linting:
     name: Linting
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
