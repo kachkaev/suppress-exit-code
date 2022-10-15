@@ -21,13 +21,8 @@ const childProcess = execa(
   // @ts-ignore args[0] cannot be undefined here due to the prior check
   args.shift(),
   args,
+  { stdio: ['inherit', 'inherit', 'inherit'] },
 );
-if (childProcess.stdout) {
-  childProcess.stdout.pipe(process.stdout);
-}
-if (childProcess.stderr) {
-  childProcess.stderr.pipe(process.stderr);
-}
 childProcess.catch(() => {
   // noop for a non-zero exit code is the whole purpose of this library
 });
