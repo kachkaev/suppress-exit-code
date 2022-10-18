@@ -1,4 +1,4 @@
-name: Codebase checks
+name: CI
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
+          cache: yarn
           node-version: 16
 
       - name: Install dependencies
@@ -51,6 +52,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
+          cache: yarn
           node-version: ${{ matrix.node }}
 
       - name: Install dependencies
