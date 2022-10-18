@@ -1,3 +1,9 @@
+## v3.0.0 (2022-10-19)
+
+- **[breaking]** Drop Node 12 support
+
+- **[potentially breaking]** Switch to ESM ([#5](https://github.com/kachkaev/suppress-exit-code/pull/5), [context](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c))
+
 ## v2.0.1 (2022-10-18)
 
 - Remove `.yarn/sdks` from published package
