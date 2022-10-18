@@ -11,15 +11,15 @@ on:
 jobs:
   linting:
     name: Linting
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Install dependencies
         run: yarn install --immutable
@@ -34,22 +34,22 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        node: [12, 14, 16]
+        node: [14, 16, 18]
         exclude:
           - os: macos-latest
-            node: 12
+            node: 14
           - os: macos-latest
-            node: 14
-          - os: windows-latest
-            node: 12
+            node: 18
           - os: windows-latest
             node: 14
+          - os: windows-latest
+            node: 18
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
