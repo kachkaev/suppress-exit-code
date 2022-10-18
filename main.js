@@ -1,13 +1,17 @@
 #!/usr/bin/env node
-const execa = require("execa");
+
+import { fileURLToPath } from "node:url";
+import { execa } from "execa";
+
+const filePath = fileURLToPath(import.meta.url);
 
 const args = [...process.argv];
 while (args.length) {
   const arg = args.shift();
   if (
-    // @ts-ignore arg cannot be undefined here due to the prior check
+    // @ts-expect-error -- arg cannot be undefined here due to the prior check
     arg.includes(".bin") ||
-    arg === __filename
+    arg === filePath
   ) {
     break;
   }
@@ -18,7 +22,7 @@ if (!args.length) {
 }
 
 const childProcess = execa(
-  // @ts-ignore args[0] cannot be undefined here due to the prior check
+  // @ts-expect-error -- args[0] cannot be undefined here due to the prior check
   args.shift(),
   args,
   { stdio: "inherit" },
