@@ -4404,7 +4404,7 @@ __metadata:
     prettier: "npm:2.7.1"
     typescript: "npm:4.8.4"
   bin:
-    suppress-exit-code: index.js
+    suppress-exit-code: main.js
   languageName: unknown
   linkType: soft
 

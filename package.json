@@ -17,8 +17,9 @@
     "name": "Alexander Kachkaev",
     "url": "https://en.kachkaev.ru/"
   },
-  "main": "index.js",
-  "bin": "index.js",
+  "type": "module",
+  "main": "main.js",
+  "bin": "main.js",
   "scripts": {
     "fix": "npm-run-all --continue-on-error \"fix:*\"",
     "fix:prettier": "prettier --write .",
@@ -30,7 +31,7 @@
     "prepack": "yarn lint && yarn test && pinst --disable",
     "postpack": "pinst --enable",
     "postinstall": "husky install",
-    "test": "jest"
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
   },
   "lint-staged": {
     "**": [

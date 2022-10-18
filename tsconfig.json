@@ -3,9 +3,9 @@
     "allowJs": true,
     "checkJs": true,
     "lib": ["es2018"],
-    "module": "commonjs",
+    "module": "Node16",
     "noEmit": true,
-    "target": "es2018",
+    "target": "ESNext",
     "strict": true
   }
 }
