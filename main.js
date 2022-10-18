@@ -3,7 +3,7 @@
 import { fileURLToPath } from "node:url";
 import { execa } from "execa";
 
-const __filename = fileURLToPath(import.meta.url);
+const filePath = fileURLToPath(import.meta.url);
 
 const args = [...process.argv];
 while (args.length) {
@@ -11,7 +11,7 @@ while (args.length) {
   if (
     // @ts-expect-error -- arg cannot be undefined here due to the prior check
     arg.includes(".bin") ||
-    arg === __filename
+    arg === filePath
   ) {
     break;
   }
