@@ -16,10 +16,24 @@ Motivation: <https://github.com/okonet/lint-staged/issues/616>
 
 ## Installation
 
+### Local
+
 ```sh
 npm install --dev suppress-exit-code
 ## or
 yarn add --dev suppress-exit-code
+## or
+pnpm add --dev suppress-exit-code
+```
+
+### Global
+
+```sh
+npm install --global suppress-exit-code
+## or
+yarn global add suppress-exit-code
+## or
+pnpm add --global suppress-exit-code
 ```
 
 ## Possible improvements

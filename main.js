@@ -7,10 +7,10 @@ const filePath = fileURLToPath(import.meta.url);
 
 const args = [...process.argv];
 while (args.length) {
-  const arg = args.shift();
+  const arg = /** @type {string} */ (args.shift());
   if (
-    // @ts-expect-error -- arg cannot be undefined here due to the prior check
     arg.includes(".bin") ||
+    arg.endsWith("suppress-exit-code") ||
     arg === filePath
   ) {
     break;
