@@ -1,3 +1,15 @@
+## v3.1.0 (2022-10-19)
+
+- Support global install
+
+  ```sh
+  npm install --global suppress-exit-code
+  ## or
+  yarn global add suppress-exit-code
+  ## or
+  pnpm add --global suppress-exit-code
+  ```
+
 ## v3.0.0 (2022-10-19)
 
 - **[breaking]** Drop Node 12 support
