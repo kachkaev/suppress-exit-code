@@ -10,7 +10,9 @@ while (args.length) {
   const arg = /** @type {string} */ (args.shift());
   if (
     arg.includes(".bin") ||
-    arg.includes("suppress-exit-code") ||
+    arg.endsWith("suppress-exit-code") ||
+    arg.endsWith("suppress-exit-code/main.js") ||
+    arg.endsWith("suppress-exit-code\\main.js") ||
     arg === filePath
   ) {
     break;
