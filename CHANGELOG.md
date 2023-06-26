@@ -1,3 +1,10 @@
+## v3.2.0 (2023-06-26)
+
+- Support `pnpm` ([#9](https://github.com/kachkaev/suppress-exit-code/pull/9) by [@risu729](https://github.com/risu729))
+
+- Update `devDependencies`
+  ([#6](https://github.com/kachkaev/suppress-exit-code/pull/6), [#7](https://github.com/kachkaev/suppress-exit-code/pull/7), [#8](https://github.com/kachkaev/suppress-exit-code/pull/8) and [8ec0479](https://github.com/kachkaev/suppress-exit-code/commit/8ec047994ad4ad086efcff3e0a6b419281fa55ed))
+
 ## v3.1.0 (2022-10-19)
 
 - Support global install
