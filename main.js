@@ -11,6 +11,8 @@ while (args.length) {
   if (
     arg.includes(".bin") ||
     arg.endsWith("suppress-exit-code") ||
+    arg.endsWith("suppress-exit-code/main.js") ||
+    arg.endsWith("suppress-exit-code\\main.js") ||
     arg === filePath
   ) {
     break;
