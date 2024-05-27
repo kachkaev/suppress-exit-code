@@ -19,7 +19,7 @@ Motivation: <https://github.com/okonet/lint-staged/issues/616>
 ### Local
 
 ```sh
-npm install --dev suppress-exit-code
+npm install --save-dev suppress-exit-code
 ## or
 yarn add --dev suppress-exit-code
 ## or
