@@ -66,7 +66,16 @@ describe("suppress-exit-code", () => {
       "--some-arg=42",
     ]);
     expect(result.stdout).toEqual("");
-    expect(result.stderr).toEqual("");
+    if (process.platform === "win32") {
+      // Anything that is not an `.exe` or a `.com` has to be run via `cmd.exe`,
+      // which reports an unknown command itself. The message reaches the user
+      // because the child inherits the standard streams
+      expect(result.stderr).toMatch(
+        /is not recognized as an internal or external command/,
+      );
+    } else {
+      expect(result.stderr).toEqual("");
+    }
     expect(result.exitCode).toEqual(0);
   });
 
