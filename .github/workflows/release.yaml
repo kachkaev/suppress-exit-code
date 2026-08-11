@@ -21,7 +21,6 @@ jobs:
     if: github.repository == 'kachkaev/suppress-exit-code'
     name: Release
     permissions:
-      actions: write
       contents: write
       id-token: write
       pull-requests: write

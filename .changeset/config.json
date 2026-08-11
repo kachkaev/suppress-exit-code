@@ -6,5 +6,6 @@
     "@changesets/changelog-github",
     { "repo": "kachkaev/suppress-exit-code", "disableThanks": true }
   ],
-  "commit": false
+  "commit": false,
+  "format": "prettier"
 }
