@@ -1,11 +1,13 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "lib": ["es2018"],
-    "module": "Node16",
-    "noEmit": true,
-    "target": "ESNext",
-    "strict": true
-  }
+    "module": "node20",
+    "target": "esnext",
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["**/*.js"],
+  "exclude": ["node_modules"]
 }

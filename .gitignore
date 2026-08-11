@@ -1,13 +1,9 @@
-# dependencies
-.yarn/*
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-yarn-debug.log*
-yarn-error.log*
+## Dependencies
+/node_modules/
 
-# misc
+## Misc
 .DS_Store
+.husky/_/
 .env*
+*.log
+/suppress-exit-code-*.tgz
