@@ -2,10 +2,13 @@ behaviour
 dedupe
 env
 esbenp
+euo
 Kachkaev
 knip
 PATHEXT
+pipefail
 risu
+subshells
 tgz
 tsc
 utf
