@@ -10,6 +10,18 @@
   ],
   "packageRules": [
     {
+      "description": "The CI matrix lists Node majors on purpose, so that every leg tracks whatever its major currently resolves to. Pinning them would freeze the matrix on the patch releases that happened to be current when it was last touched, and adding new majors is a deliberate decision anyway.",
+      "matchDatasources": ["node-version"],
+      "matchManagers": ["github-actions"],
+      "enabled": false
+    },
+    {
+      "description": "Development happens on the oldest supported Node so that accidental use of a newer API surfaces locally rather than in a consumer's install. Keep this on the same major as `engines` in package.json, and raise both together.",
+      "matchDatasources": ["node-version"],
+      "matchManagers": ["asdf"],
+      "allowedVersions": "^22"
+    },
+    {
       "autoApprove": true,
       "automerge": true,
       "dependencyDashboardApproval": false,

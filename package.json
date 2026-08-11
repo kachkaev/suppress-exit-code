@@ -26,7 +26,8 @@
   "license": "MIT",
   "author": {
     "name": "Alexander Kachkaev",
-    "url": "https://en.kachkaev.ru/"
+    "email": "alexander@kachkaev.ru",
+    "url": "https://en.kachkaev.ru"
   },
   "type": "module",
   "bin": "main.js",
