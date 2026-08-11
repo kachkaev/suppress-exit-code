@@ -37,6 +37,7 @@ const childProcess = spawn(
   { stdio: "inherit" },
 );
 childProcess.on("error", () => {
-  // noop for a failed spawn is the whole purpose of this library, just like for
-  // a non-zero exit code, which does not affect the exit code of this process
+  // Swallowing a failed spawn is the whole purpose of this wrapper. A non-zero
+  // exit code of the child needs no handler at all: it does not affect the exit
+  // code of this process
 });

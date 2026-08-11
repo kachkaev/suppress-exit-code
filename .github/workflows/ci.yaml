@@ -51,7 +51,7 @@ jobs:
             echo ''
             echo 'ℹ️ ℹ️ ℹ️'
             echo 'Please fix the above errors locally for the check to pass.'
-            echo 'If you do not see them, try merging target branch into yours.'
+            echo 'If you do not see them, try merging the target branch into yours.'
             echo 'You can add exceptions to `cspell-words.txt`, if necessary.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
@@ -135,7 +135,7 @@ jobs:
             echo ''
             echo 'ℹ️ ℹ️ ℹ️'
             echo 'Please fix the above errors locally for the check to pass.'
-            echo 'If you don’t see them, try merging target branch into yours.'
+            echo 'If you do not see them, try merging the target branch into yours.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
           fi
@@ -210,11 +210,11 @@ jobs:
       # The tests run `main.js` from the repository, so this is the only check
       # of what npm actually publishes. The tarball is installed with npm and
       # into a directory of its own, which makes the binary reachable through
-      # the `node_modules/.bin` shims a consumer gets — on Windows a `.cmd` one.
+      # the `node_modules/.bin` shims a consumer gets – on Windows a `.cmd` one.
       #
       # `pnpm install` is not needed beforehand: nothing is built and the
       # `prepare` script exits early when `CI` is set. The commands run in a
-      # nested bash so that `set -e` applies — an `if !` condition switches it
+      # nested bash so that `set -e` applies – an `if !` condition switches it
       # off for everything it wraps, subshells included
       - name: Pack the package and run the binary from a scratch install
         if: ${{ success() || failure() }}

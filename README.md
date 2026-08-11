@@ -2,13 +2,15 @@
 
 _Cross-platform CLI wrapper that runs any command and exits with zero_ <!-- markdownlint-disable-line MD036 -- a tagline, not a heading -->
 
-[![npm](https://img.shields.io/npm/v/suppress-exit-code.svg)](https://www.npmjs.com/package/suppress-exit-code)
+[![npm version](https://img.shields.io/npm/v/suppress-exit-code?logo=npm&color=3c7ef6&labelColor=333)](https://www.npmjs.com/package/suppress-exit-code)
+[![npm downloads](https://img.shields.io/npm/dw/suppress-exit-code?logo=npm&color=3c7ef6&labelColor=333)](https://www.npmjs.com/package/suppress-exit-code)
+[![License](https://img.shields.io/badge/license-MIT-3c7ef6?logo=opensourceinitiative&logoColor=white&labelColor=333)](LICENSE.md)
 
 ```sh
 ## exits with non-zero
 crazy-broken-command --some-arg=42
 
-## exits with zero, stdout and stderr streams are kept as is
+## exits with zero, stdout and stderr are kept as is
 suppress-exit-code crazy-broken-command --some-arg=42
 ```
 
@@ -37,10 +39,10 @@ npm install --global suppress-exit-code
 pnpm add --global suppress-exit-code
 ```
 
-## Behaviour
+## Behavior
 
 The child command inherits the standard streams, so its output reaches the terminal as is.
-Whatever the child does, this wrapper exits with zero — a non-zero exit code, a signal and even a command that does not exist are all suppressed:
+Whatever the child does, the wrapper exits with zero – a non-zero exit code, a signal and even a command that does not exist are all suppressed:
 
 ```sh
 ## exits with zero, prints nothing on macOS and Linux
@@ -52,15 +54,15 @@ The only non-zero exit comes from the wrapper itself: with no arguments it write
 
 ## Possible improvements
 
-Feel free to contribute with a PR if you need these extra features (they are possible, but are not implemented yet):
+Not implemented yet – a PR is welcome if you need them:
 
 ```sh
-## keep exit code unless it matches a given allowlist
+## keep the exit code unless it matches a given allowlist
 suppress-exit-code --only=1,2,3 crazy-broken-command --some-arg=42
 ```
 
 ```sh
-## make sure nothing is ever printed to the standard error stream
+## make sure nothing is ever printed to stderr
 ## (helps when running a subcommand in sensitive environments)
 suppress-exit-code --stderr=pipe-to-stdout crazy-broken-command --some-arg=42
 suppress-exit-code --stderr=suppress crazy-broken-command --some-arg=42

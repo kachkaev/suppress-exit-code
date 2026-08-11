@@ -67,8 +67,8 @@ describe("suppress-exit-code", () => {
     expect(result.exitCode).toEqual(0);
   });
 
-  // Windows has no signals, so a killed process is indistinguishable from one
-  // that exited with a code there
+  // Windows has no signals: a killed process there is indistinguishable from
+  // one that exited with a code
   it.runIf(process.platform !== "win32")(
     "Suppresses a command killed by a signal",
     async () => {
@@ -105,7 +105,7 @@ describe("suppress-exit-code", () => {
   it("Runs a locally installed binary", async () => {
     // `preferLocal` puts `node_modules/.bin` into the PATH of the wrapper, which
     // then passes it on to the child. On Windows the resolved binary is
-    // `prettier.cmd`, which `node:child_process.spawn` is unable to run
+    // `prettier.cmd`, which `node:child_process.spawn` cannot run
     const result = await runWrapper(["prettier", "--version"], {
       preferLocal: true,
     });
