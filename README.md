@@ -1,6 +1,6 @@
 # suppress-exit-code
 
-_Cross-platform CLI wrapper that runs any command and exits with zero_
+_Cross-platform CLI wrapper that runs any command and exits with zero_ <!-- markdownlint-disable-line MD036 -- a tagline, not a heading -->
 
 [![npm](https://img.shields.io/npm/v/suppress-exit-code.svg)](https://www.npmjs.com/package/suppress-exit-code)
 
