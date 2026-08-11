@@ -1,6 +1,9 @@
 ## Dependencies
 /node_modules/
 
+## Local Claude Code config (contains machine-specific paths)
+/.claude/
+
 ## Misc
 .DS_Store
 .husky/_/
