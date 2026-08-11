@@ -12,11 +12,12 @@ crazy-broken-command --some-arg=42
 suppress-exit-code crazy-broken-command --some-arg=42
 ```
 
-Motivation: <https://github.com/okonet/lint-staged/issues/616>
+Motivation: <https://github.com/lint-staged/lint-staged/issues/616>
 
 ## Installation
 
 Requires Node 22.13 or newer.
+If you are on an older Node, stay on v3.
 
 ### Local
 
@@ -33,23 +34,52 @@ pnpm add --dev suppress-exit-code
 ```sh
 npm install --global suppress-exit-code
 ## or
-yarn global add suppress-exit-code
-## or
 pnpm add --global suppress-exit-code
 ```
+
+## Behaviour
+
+The child command inherits the standard streams, so its output reaches the terminal as is.
+Whatever the child does, this wrapper exits with zero — a non-zero exit code, a signal and even a command that does not exist are all suppressed:
+
+```sh
+## exits with zero, prints nothing on macOS and Linux
+## (on Windows cmd.exe prints its own “is not recognized” message)
+suppress-exit-code definitely-not-a-real-command
+```
+
+The only non-zero exit comes from the wrapper itself: with no arguments it writes `Please specify a child command to run` to stderr and exits with one.
 
 ## Possible improvements
 
 Feel free to contribute with a PR if you need these extra features (they are possible, but are not implemented yet):
 
 ```sh
-## keep exit code unless it matches a given whitelist
+## keep exit code unless it matches a given allowlist
 suppress-exit-code --only=1,2,3 crazy-broken-command --some-arg=42
 ```
 
 ```sh
 ## make sure nothing is ever printed to the standard error stream
-## (helps when running a subcommand in sensible environments)
+## (helps when running a subcommand in sensitive environments)
 suppress-exit-code --stderr=pipe-to-stdout crazy-broken-command --some-arg=42
 suppress-exit-code --stderr=suppress crazy-broken-command --some-arg=42
 ```
+
+## Development
+
+The package is a single JavaScript file, type-checked via JSDoc.
+
+```sh
+pnpm install
+pnpm test
+pnpm lint
+pnpm fix
+```
+
+Tests run the real binary, so they cover the `node_modules/.bin` shims too.
+CI repeats them on Linux, macOS and Windows across the supported Node versions.
+
+## License
+
+[MIT](LICENSE.md)

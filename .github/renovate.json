@@ -39,6 +39,12 @@
       "matchManagers": ["npm"],
       "minimumReleaseAge": "2 days",
       "schedule": ["every weekend"]
+    },
+    {
+      "description": "Runtime dependencies are published to consumers, so an exact pin would force duplicate installs on them",
+      "matchDepTypes": ["dependencies"],
+      "matchManagers": ["npm"],
+      "rangeStrategy": "replace"
     }
   ],
   "postUpdateOptions": ["pnpmDedupe"],

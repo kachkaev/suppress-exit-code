@@ -3,11 +3,22 @@
   "version": "3.2.0",
   "description": "Cross-platform CLI wrapper that runs any command and exits with zero",
   "keywords": [
+    "child-process",
     "cli",
+    "cross-platform",
+    "exit",
     "exit-code",
+    "exit-status",
     "ignore",
-    "suppress"
+    "lint-staged",
+    "spawn",
+    "suppress",
+    "wrapper"
   ],
+  "homepage": "https://github.com/kachkaev/suppress-exit-code#readme",
+  "bugs": {
+    "url": "https://github.com/kachkaev/suppress-exit-code/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kachkaev/suppress-exit-code.git"
@@ -18,7 +29,6 @@
     "url": "https://en.kachkaev.ru/"
   },
   "type": "module",
-  "main": "main.js",
   "bin": "main.js",
   "files": [
     "LICENSE.md",
@@ -52,7 +62,7 @@
   },
   "prettier": "@kachkaev/prettier-config",
   "dependencies": {
-    "cross-spawn": "7.0.6"
+    "cross-spawn": "^7.0.6"
   },
   "devDependencies": {
     "@changesets/changelog-github": "1.0.0",

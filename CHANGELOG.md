@@ -1,13 +1,13 @@
 # suppress-exit-code
 
-## v3.2.0 (2023-06-26)
+## 3.2.0 (2023-06-26)
 
 - Support `pnpm` ([#9](https://github.com/kachkaev/suppress-exit-code/pull/9) by [@risu729](https://github.com/risu729))
 
 - Update `devDependencies`
   ([#6](https://github.com/kachkaev/suppress-exit-code/pull/6), [#7](https://github.com/kachkaev/suppress-exit-code/pull/7), [#8](https://github.com/kachkaev/suppress-exit-code/pull/8) and [8ec0479](https://github.com/kachkaev/suppress-exit-code/commit/8ec047994ad4ad086efcff3e0a6b419281fa55ed))
 
-## v3.1.0 (2022-10-19)
+## 3.1.0 (2022-10-19)
 
 - Support global install
 
@@ -19,19 +19,19 @@
   pnpm add --global suppress-exit-code
   ```
 
-## v3.0.0 (2022-10-19)
+## 3.0.0 (2022-10-19)
 
 - **[breaking]** Drop Node 12 support
 
 - **[potentially breaking]** Switch to ESM ([#5](https://github.com/kachkaev/suppress-exit-code/pull/5), [context](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c))
 
-## v2.0.1 (2022-10-18)
+## 2.0.1 (2022-10-18)
 
 - Remove `.yarn/sdks` from published package
 
 - Fix `CHANGELOG.md`
 
-## v2.0.0 (2022-10-18)
+## 2.0.0 (2022-10-18)
 
 - **[potentially breaking]** Use `stdio: "inherit"` instead of piping `stdout` and `stderr` ([#3](https://github.com/kachkaev/suppress-exit-code/pull/3))
 
@@ -41,7 +41,7 @@
   - Update `devDependencies`
   - Configure `husky` and `lint-staged`
 
-## v1.0.0 (2020-12-20)
+## 1.0.0 (2020-12-20)
 
 - Upgrade `execa` from v1 to v5
 
