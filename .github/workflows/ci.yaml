@@ -15,6 +15,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+# Git hooks are of no use on a throwaway checkout, so keep the `prepare` script
+# from installing them: https://typicode.github.io/husky/how-to.html#ci-server-and-docker
+env:
+  HUSKY: 0
+
 jobs:
   checks:
     name: Run checks
@@ -212,15 +217,16 @@ jobs:
       # into a directory of its own, which makes the binary reachable through
       # the `node_modules/.bin` shims a consumer gets – on Windows a `.cmd` one.
       #
-      # `pnpm install` is not needed beforehand: nothing is built and the
-      # `prepare` script exits early when `CI` is set. The commands run in a
-      # nested bash so that `set -e` applies – an `if !` condition switches it
-      # off for everything it wraps, subshells included
+      # `pnpm install` is not needed beforehand: nothing is built. Lifecycle
+      # scripts are switched off for the same reason – without `node_modules`,
+      # the `husky` binary the `prepare` script calls does not exist yet. The
+      # commands run in a nested bash so that `set -e` applies – an `if !`
+      # condition switches it off for everything it wraps, subshells included
       - name: Pack the package and run the binary from a scratch install
         if: ${{ success() || failure() }}
         run: |
           if ! bash -euo pipefail -c '
-            pnpm pack --out ../suppress-exit-code.tgz
+            pnpm pack --config.ignore-scripts=true --out ../suppress-exit-code.tgz
             mkdir ../smoke-test
             cd ../smoke-test
             npm init --yes
