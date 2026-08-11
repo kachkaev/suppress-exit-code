@@ -1,3 +1,5 @@
+# suppress-exit-code
+
 ## v3.2.0 (2023-06-26)
 
 - Support `pnpm` ([#9](https://github.com/kachkaev/suppress-exit-code/pull/9) by [@risu729](https://github.com/risu729))
