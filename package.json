@@ -1,6 +1,6 @@
 {
   "name": "suppress-exit-code",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "Cross-platform CLI wrapper that runs any command and exits with zero",
   "keywords": [
     "child-process",
