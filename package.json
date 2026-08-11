@@ -26,6 +26,8 @@
     "main.js"
   ],
   "scripts": {
+    "changesets:publish": "changeset publish",
+    "changesets:version": "changeset version",
     "fix": "npm-run-all --continue-on-error \"fix:*\"",
     "fix:eslint": "eslint --max-warnings=0 --fix",
     "fix:knip": "knip --fix",
@@ -53,6 +55,9 @@
     "execa": "^6.1.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "1.0.0",
+    "@changesets/cli": "3.0.0",
+    "@changesets/config": "4.0.0",
     "@kachkaev/eslint-config-base": "1.2.0",
     "@kachkaev/markdownlint-config": "1.0.1",
     "@kachkaev/prettier-config": "2.2.1",
@@ -73,5 +78,9 @@
   "packageManager": "pnpm@11.21.0",
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

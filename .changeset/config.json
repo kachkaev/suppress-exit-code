@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@changesets/config/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "kachkaev/suppress-exit-code", "disableThanks": true }
+  ],
+  "commit": false
+}
