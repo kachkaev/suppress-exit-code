@@ -2,7 +2,7 @@
 
 import { fileURLToPath } from "node:url";
 
-import { execa } from "execa";
+import spawn from "cross-spawn";
 
 const filePath = fileURLToPath(import.meta.url);
 
@@ -25,12 +25,18 @@ if (args.length === 0) {
   process.exit(1);
 }
 
-const childProcess = execa(
+// `cross-spawn` is used instead of `node:child_process.spawn` because on Windows
+// the latter cannot run `node_modules/.bin` shims: its PATH lookup never consults
+// `PATHEXT`, and passing a `.cmd` or `.bat` path to it without `shell: true` throws
+// (CVE-2024-27980). Turning `shell: true` on is not an option either, as Node does
+// not escape arguments in that mode (DEP0190)
+const childProcess = spawn(
   // @ts-expect-error -- args[0] cannot be undefined here due to the prior check
   args.shift(),
   args,
   { stdio: "inherit" },
 );
-childProcess.catch(() => {
-  // noop for a non-zero exit code is the whole purpose of this library
+childProcess.on("error", () => {
+  // noop for a failed spawn is the whole purpose of this library, just like for
+  // a non-zero exit code, which does not affect the exit code of this process
 });

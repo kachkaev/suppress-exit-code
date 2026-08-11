@@ -16,6 +16,8 @@ Motivation: <https://github.com/okonet/lint-staged/issues/616>
 
 ## Installation
 
+Requires Node 22.13 or newer.
+
 ### Local
 
 ```sh

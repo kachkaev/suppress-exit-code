@@ -1,8 +1,10 @@
+behaviour
 dedupe
 env
 esbenp
 Kachkaev
 knip
+PATHEXT
 risu
 tgz
 tsc
