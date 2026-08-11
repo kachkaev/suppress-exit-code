@@ -12,6 +12,11 @@ permissions:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+# Git hooks are of no use on a throwaway checkout, so keep the `prepare` script
+# from installing them: https://typicode.github.io/husky/how-to.html#ci-server-and-docker
+env:
+  HUSKY: 0
+
 jobs:
   release:
     # npm trusted publishing is configured against this exact combination of

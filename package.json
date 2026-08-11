@@ -53,7 +53,7 @@
     "lint:pnpm-dedupe": "pnpm dedupe --check",
     "lint:prettier": "prettier --cache --check .",
     "lint:tsc": "tsc --noEmit",
-    "prepare": "node .husky/install.mjs",
+    "prepare": "husky",
     "test": "vitest run"
   },
   "lint-staged": {

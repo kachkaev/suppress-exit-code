@@ -5,10 +5,6 @@ export default defineConfig([
   ...generateBaseConfigs({ tsconfigRootDir: import.meta.dirname }),
 
   {
-    ignores: [".husky/**"],
-  },
-
-  {
     // The base config grants test files access to devDependencies, but its
     // glob only covers TypeScript. The source of this package is JavaScript.
     files: ["**/*.test.js"],
