@@ -1,4 +1,5 @@
 import { execa } from "execa";
+import { describe, expect, it } from "vitest";
 
 describe("suppress-exit-code", () => {
   it("Does not work without arguments", async () => {
