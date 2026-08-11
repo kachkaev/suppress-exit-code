@@ -210,11 +210,11 @@ jobs:
       # The tests run `main.js` from the repository, so this is the only check
       # of what npm actually publishes. The tarball is installed with npm and
       # into a directory of its own, which makes the binary reachable through
-      # the `node_modules/.bin` shims a consumer gets — on Windows a `.cmd` one.
+      # the `node_modules/.bin` shims a consumer gets – on Windows a `.cmd` one.
       #
       # `pnpm install` is not needed beforehand: nothing is built and the
       # `prepare` script exits early when `CI` is set. The commands run in a
-      # nested bash so that `set -e` applies — an `if !` condition switches it
+      # nested bash so that `set -e` applies – an `if !` condition switches it
       # off for everything it wraps, subshells included
       - name: Pack the package and run the binary from a scratch install
         if: ${{ success() || failure() }}

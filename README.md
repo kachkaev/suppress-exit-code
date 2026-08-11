@@ -37,10 +37,10 @@ npm install --global suppress-exit-code
 pnpm add --global suppress-exit-code
 ```
 
-## Behaviour
+## Behavior
 
 The child command inherits the standard streams, so its output reaches the terminal as is.
-Whatever the child does, this wrapper exits with zero — a non-zero exit code, a signal and even a command that does not exist are all suppressed:
+Whatever the child does, this wrapper exits with zero – a non-zero exit code, a signal and even a command that does not exist are all suppressed:
 
 ```sh
 ## exits with zero, prints nothing on macOS and Linux
