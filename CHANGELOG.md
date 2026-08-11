@@ -1,5 +1,15 @@
 # suppress-exit-code
 
+## 4.0.0
+
+### Major Changes
+
+- [#17](https://github.com/kachkaev/suppress-exit-code/pull/17) [`0f5e882`](https://github.com/kachkaev/suppress-exit-code/commit/0f5e882fa24340896a705aff59f3b36e57ac55f6) - **[breaking]** Require Node 22.13 or newer
+
+### Patch Changes
+
+- [#17](https://github.com/kachkaev/suppress-exit-code/pull/17) [`0f5e882`](https://github.com/kachkaev/suppress-exit-code/commit/0f5e882fa24340896a705aff59f3b36e57ac55f6) - Replace `execa` with `cross-spawn` – the behavior is the same, but a production install shrinks from 17 packages to 6
+
 ## 3.2.0 (2023-06-26)
 
 - Support `pnpm` ([#9](https://github.com/kachkaev/suppress-exit-code/pull/9) by [@risu729](https://github.com/risu729))
