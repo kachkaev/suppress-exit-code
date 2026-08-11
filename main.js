@@ -1,24 +1,26 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from "node:url";
+
 import { execa } from "execa";
 
 const filePath = fileURLToPath(import.meta.url);
 
 const args = [...process.argv];
-while (args.length) {
+while (args.length > 0) {
   const arg = /** @type {string} */ (args.shift());
   if (
     arg.includes(".bin") ||
     arg.endsWith("suppress-exit-code") ||
     arg.endsWith("suppress-exit-code/main.js") ||
-    arg.endsWith("suppress-exit-code\\main.js") ||
+    arg.endsWith(String.raw`suppress-exit-code\main.js`) ||
     arg === filePath
   ) {
     break;
   }
 }
-if (!args.length) {
+if (args.length === 0) {
+  // eslint-disable-next-line no-console -- Writing to stderr is how a CLI reports a usage error
   console.error("Please specify a child command to run");
   process.exit(1);
 }
