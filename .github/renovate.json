@@ -1,13 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":dependencyDashboardApproval",
-    ":disableDigestUpdates",
-    ":maintainLockFilesWeekly",
-    ":semanticCommitsDisabled",
-    "helpers:pinGitHubActionDigestsToSemver"
-  ],
+  "extends": ["github>kachkaev/reusable-stuff:renovate-preset"],
   "packageRules": [
     {
       "description": "The CI matrix lists Node majors on purpose, so that every leg tracks whatever its major currently resolves to. Pinning them would freeze the matrix on the patch releases that happened to be current when it was last touched, and adding new majors is a deliberate decision anyway.",
@@ -22,46 +15,10 @@
       "allowedVersions": "^22"
     },
     {
-      "autoApprove": true,
-      "automerge": true,
-      "dependencyDashboardApproval": false,
-      "enabled": true,
-      "minimumReleaseAge": "2 days",
-      "matchManagers": ["npm"],
-      "matchPackageNames": ["/^pnpm$/"],
-      "schedule": ["every weekend"]
-    },
-    {
-      "autoApprove": true,
-      "automerge": true,
-      "dependencyDashboardApproval": false,
-      "enabled": true,
-      "matchUpdateTypes": ["patch"],
-      "matchCurrentValue": "!/^0\\./",
-      "matchManagers": ["npm"],
-      "minimumReleaseAge": "2 days",
-      "schedule": ["every weekend"]
-    },
-    {
-      "autoApprove": true,
-      "automerge": true,
-      "dependencyDashboardApproval": false,
-      "enabled": true,
-      "matchDepTypes": ["devDependencies"],
-      "matchManagers": ["npm"],
-      "minimumReleaseAge": "2 days",
-      "schedule": ["every weekend"]
-    },
-    {
       "description": "Runtime dependencies are published to consumers, so an exact pin would force duplicate installs on them",
       "matchDepTypes": ["dependencies"],
       "matchManagers": ["npm"],
       "rangeStrategy": "replace"
     }
-  ],
-  "postUpdateOptions": ["pnpmDedupe"],
-  "prConcurrentLimit": 5,
-  "prHourlyLimit": 1,
-  "rangeStrategy": "pin",
-  "timezone": "Etc/UTC"
+  ]
 }
