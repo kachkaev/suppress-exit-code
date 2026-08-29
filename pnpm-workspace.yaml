@@ -1,3 +1,10 @@
+# Install packages only after they have been out for at least 8 hours, which
+# reduces exposure to malicious releases that tend to get unpublished quickly.
+# This must stay in sync with the `minimumReleaseAge` floor in the shared
+# Renovate preset (github>kachkaev/reusable-stuff:renovate-preset), so that
+# Renovate never proposes a version pnpm would refuse to lock.
+minimumReleaseAge: 480
+
 # The Changesets v3 line was published on the day this file was added, so pnpm’s
 # default `minimumReleaseAge` gate rejects it. These entries opt the release
 # tooling out of that gate; they can be dropped once the versions have aged.
