@@ -8,6 +8,18 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Git hooks are of no use on a throwaway checkout, so keep the `prepare` script
+# from installing them: https://typicode.github.io/husky/how-to.html#ci-server-and-docker
+env:
+  HUSKY: 0
+
 jobs:
   checks:
     name: Run checks
@@ -44,7 +56,7 @@ jobs:
             echo ''
             echo 'ℹ️ ℹ️ ℹ️'
             echo 'Please fix the above errors locally for the check to pass.'
-            echo 'If you do not see them, try merging target branch into yours.'
+            echo 'If you do not see them, try merging the target branch into yours.'
             echo 'You can add exceptions to `cspell-words.txt`, if necessary.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
@@ -128,7 +140,7 @@ jobs:
             echo ''
             echo 'ℹ️ ℹ️ ℹ️'
             echo 'Please fix the above errors locally for the check to pass.'
-            echo 'If you don’t see them, try merging target branch into yours.'
+            echo 'If you do not see them, try merging the target branch into yours.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
           fi
@@ -172,6 +184,64 @@ jobs:
             echo 'Please fix the above test failures locally for the check to pass.'
             echo 'Note that this package is cross-platform, so a failure can be'
             echo 'specific to ${{ matrix.os }} and / or to node ${{ matrix.node }}.'
+            echo 'ℹ️ ℹ️ ℹ️'
+            exit 1
+          fi
+
+  package-smoke-test:
+    name: Smoke-test the packed package (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    # Windows runners default to PowerShell, which does not understand the
+    # `if ! command` syntax used to print remediation hints below
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+
+      - name: Setup node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .tool-versions
+
+      # The tests run `main.js` from the repository, so this is the only check
+      # of what npm actually publishes. The tarball is installed with npm and
+      # into a directory of its own, which makes the binary reachable through
+      # the `node_modules/.bin` shims a consumer gets – on Windows a `.cmd` one.
+      #
+      # `pnpm install` is not needed beforehand: nothing is built. Lifecycle
+      # scripts are switched off for the same reason – without `node_modules`,
+      # the `husky` binary the `prepare` script calls does not exist yet. The
+      # commands run in a nested bash so that `set -e` applies – an `if !`
+      # condition switches it off for everything it wraps, subshells included
+      - name: Pack the package and run the binary from a scratch install
+        if: ${{ success() || failure() }}
+        run: |
+          if ! bash -euo pipefail -c '
+            pnpm pack --config.ignore-scripts=true --out ../suppress-exit-code.tgz
+            mkdir ../smoke-test
+            cd ../smoke-test
+            npm init --yes
+            npm install ../suppress-exit-code.tgz
+            output=$(./node_modules/.bin/suppress-exit-code echo hello | tr -d "\r")
+            test "$output" = hello
+            npx suppress-exit-code node -e "process.exit(42)"
+            npx suppress-exit-code definitely-not-a-real-command
+          '; then
+            echo ''
+            echo ''
+            echo 'ℹ️ ℹ️ ℹ️'
+            echo 'The published package could not be installed or run on ${{ matrix.os }}.'
+            echo 'Check `bin` and `files` in package.json, then reproduce locally with'
+            echo '`pnpm pack` followed by `npm install` of the tarball elsewhere.'
             echo 'ℹ️ ℹ️ ℹ️'
             exit 1
           fi

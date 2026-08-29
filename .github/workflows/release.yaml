@@ -12,6 +12,11 @@ permissions:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+# Git hooks are of no use on a throwaway checkout, so keep the `prepare` script
+# from installing them: https://typicode.github.io/husky/how-to.html#ci-server-and-docker
+env:
+  HUSKY: 0
+
 jobs:
   release:
     # npm trusted publishing is configured against this exact combination of
@@ -53,8 +58,8 @@ jobs:
         # There is no floating `v2` tag for this action, so the pinned SHA is
         # the v2.0.0 release commit. v2 renamed every input it kept from v1
         # (`publish` → `publish-script` and so on), dropped `NPM_TOKEN` and
-        # `.npmrc` handling in favour of npm trusted publishing, and no longer
-        # reads a `GITHUB_TOKEN` environment variable — the token now comes
+        # `.npmrc` handling in favor of npm trusted publishing, and no longer
+        # reads a `GITHUB_TOKEN` environment variable – the token now comes
         # from the `github-token` input, which defaults to `github.token`.
         #
         # The action passes a `CHANGESETS_OUTPUT` environment variable to the
