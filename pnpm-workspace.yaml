@@ -4,3 +4,15 @@
 # Renovate preset (github>kachkaev/reusable-stuff:renovate-preset), so that
 # Renovate never proposes a version pnpm would refuse to lock.
 minimumReleaseAge: 480
+
+# Packages published from kachkaev/reusable-stuff are our own, so there is no reason to wait for
+# pnpm’s minimum release age before adopting a release.
+minimumReleaseAgeExclude:
+  - "@kachkaev/*"
+
+# TEMPORARY, see https://github.com/kachkaev/reusable-stuff/issues/347: @kachkaev/eslint-config-base v2
+# installs eslint-plugin-import from a git snapshot because the plugin has no ESLint 10-compatible
+# release on npm yet, and pnpm blocks git-hosted transitive dependencies by default. While this is
+# off, review lockfile diffs in dependency PRs for unexpected codeload.github.com tarballs. Remove
+# once the config is back on npm releases (tracked in the issue above).
+blockExoticSubdeps: false
