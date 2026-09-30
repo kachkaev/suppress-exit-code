@@ -1,0 +1,3 @@
+# Check out every text file with LF, Windows included. A CRLF after the shebang of main.js, the
+# published binary, breaks it on Unix, and `pnpm pack` refuses to pack it since pnpm 12.7.
+* text=auto eol=lf
