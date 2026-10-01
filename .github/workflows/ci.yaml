@@ -149,6 +149,15 @@ jobs:
 
       - name: Run pnpm test
         if: ${{ success() || failure() }}
+        env:
+          # pnpm/setup installs dependencies with `--no-runtime`, so that the
+          # tests run on the matrix Node.js rather than the one in `devEngines`.
+          # With `autoDedupe` on, pnpm 12.8.1 takes that install for an outdated
+          # one before `pnpm test` and adds the `devEngines` Node.js to
+          # node_modules/.bin, which then shadows the matrix one (and makes
+          # every test time out on Windows). Skipping that check keeps the
+          # matrix Node.js.
+          PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN: false
         run: |
           if ! pnpm test; then
             echo ''
