@@ -11,7 +11,7 @@
     {
       "description": "Development happens on the oldest supported Node so that accidental use of a newer API surfaces locally rather than in a consumer's install. Keep this on the same major as `engines` in package.json, and raise both together.",
       "matchDatasources": ["node-version"],
-      "matchManagers": ["asdf"],
+      "matchDepTypes": ["devEngines.runtime"],
       "allowedVersions": "^22"
     },
     {
