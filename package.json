@@ -75,7 +75,7 @@
     "@types/node": "26.6.6",
     "@typescript/native": "npm:typescript@7.0.2",
     "cspell": "10.4.0",
-    "eslint": "10.13.0",
+    "eslint": "10.14.0",
     "execa": "10.2.1",
     "husky": "9.1.7",
     "knip": "6.43.0",
