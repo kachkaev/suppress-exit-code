@@ -187,7 +187,7 @@ importers:
         version: 1.0.1(markdownlint-cli@0.50.0)
       '@kachkaev/prettier-config':
         specifier: 2.2.1
-        version: 2.2.1(prettier@3.9.10)
+        version: 2.2.1(prettier@3.10.1)
       '@tsconfig/strictest':
         specifier: 2.0.9
         version: 2.0.9
@@ -228,8 +228,8 @@ importers:
         specifier: 9.0.4
         version: 9.0.4
       prettier:
-        specifier: 3.9.10
-        version: 3.9.10
+        specifier: 3.10.1
+        version: 3.10.1
       typescript:
         specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
@@ -2757,8 +2757,8 @@ packages:
     peerDependencies:
       prettier: ^3.6.0
 
-  prettier@3.9.10:
-    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
+  prettier@3.10.1:
+    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3712,11 +3712,11 @@ snapshots:
     dependencies:
       markdownlint-cli: 0.50.0
 
-  '@kachkaev/prettier-config@2.2.1(prettier@3.9.10)':
+  '@kachkaev/prettier-config@2.2.1(prettier@3.10.1)':
     dependencies:
-      prettier: 3.9.10
-      prettier-plugin-packagejson: 3.1.0(prettier@3.9.10)
-      prettier-plugin-sh: 0.18.1(prettier@3.9.10)
+      prettier: 3.10.1
+      prettier-plugin-packagejson: 3.1.0(prettier@3.10.1)
+      prettier-plugin-sh: 0.18.1(prettier@3.10.1)
 
   '@keyv/bigmap@1.3.1(keyv@5.6.0)':
     dependencies:
@@ -5723,19 +5723,19 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-packagejson@3.1.0(prettier@3.9.10):
+  prettier-plugin-packagejson@3.1.0(prettier@3.10.1):
     dependencies:
       sort-package-json: 4.1.0
     optionalDependencies:
-      prettier: 3.9.10
+      prettier: 3.10.1
 
-  prettier-plugin-sh@0.18.1(prettier@3.9.10):
+  prettier-plugin-sh@0.18.1(prettier@3.10.1):
     dependencies:
       '@reteps/dockerfmt': 0.5.4
-      prettier: 3.9.10
+      prettier: 3.10.1
       sh-syntax: 0.5.8
 
-  prettier@3.9.10: {}
+  prettier@3.10.1: {}
 
   pretty-ms@9.3.1:
     dependencies:

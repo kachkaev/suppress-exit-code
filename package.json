@@ -82,7 +82,7 @@
     "lint-staged": "17.6.0",
     "markdownlint-cli": "0.50.0",
     "npm-run-all2": "9.0.4",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vitest": "5.1.0"
   },
